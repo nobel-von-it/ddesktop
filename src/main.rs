@@ -1,5 +1,5 @@
 use core::panic;
-use std::{io::Write, path::Path};
+use std::io::Write;
 
 fn main() {
     println!("enter program name: ");
@@ -37,6 +37,7 @@ fn create_file(program_name: &str) {
     let icon = find_files(&start_path, format!("{desktop_name}.png")).unwrap_or_else(|| panic!("exec find error"));
 
     let _ = writeln!(desktop, "[Desktop Entry]");
+    let _ = writeln!(desktop, "Name={program_name}");
     let _ = writeln!(desktop, "Type=Application");
     let _ = writeln!(desktop, "Terminal=false");
     let _ = writeln!(desktop, "Exec={exec}");
